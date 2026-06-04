@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Grade 8 Algebra Practice Test - 25 Questions</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{min-height:100vh;overflow:hidden;font-family:"Segoe UI",Arial,sans-serif;background:radial-gradient(circle at top,#123f70 0%,#071a33 45%,#020916 100%);color:white}
+.screen{position:relative;width:100vw;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:16px}
+.bg{position:absolute;inset:0;z-index:1;overflow:hidden}
+.grid{position:absolute;inset:-80px;background-image:linear-gradient(rgba(87,214,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(87,214,255,.08) 1px,transparent 1px);background-size:46px 46px;animation:moveGrid 18s linear infinite}
+@keyframes moveGrid{from{transform:translate(0,0) rotate(-2deg)}to{transform:translate(46px,46px) rotate(-2deg)}}
+.stream{position:absolute;left:-20%;width:140%;font-family:Georgia,serif;font-weight:700;color:rgba(255,214,87,.16);white-space:nowrap;animation:stream 26s linear infinite}
+@keyframes stream{from{transform:translateX(-18%)}to{transform:translateX(18%)}}
+.orb{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(78,209,255,.34),rgba(78,209,255,0));animation:pulse 5s ease-in-out infinite alternate}
+@keyframes pulse{from{transform:scale(.85);opacity:.28}to{transform:scale(1.2);opacity:.65}}
+.float-symbol{position:absolute;color:rgba(255,255,255,.15);font-weight:800;text-shadow:0 0 18px rgba(88,215,255,.25);animation:float 16s linear forwards;user-select:none}
+@keyframes float{0%{transform:translateY(110vh) rotate(0deg);opacity:0}12%,82%{opacity:1}100%{transform:translateY(-20vh) rotate(360deg);opacity:0}}
+.card{position:relative;z-index:5;width:min(96vw,1600px);height:min(90vh,900px);aspect-ratio:16/9;padding:34px;border-radius:34px;background:linear-gradient(145deg,rgba(255,255,255,.18),rgba(255,255,255,.06));border:1px solid rgba(255,255,255,.22);box-shadow:0 35px 90px rgba(0,0,0,.42),inset 0 0 28px rgba(255,255,255,.07);backdrop-filter:blur(18px);overflow:hidden;text-align:center}
+.test-card{display:flex;flex-direction:column;text-align:left;padding:24px 34px 22px!important}
+.top-label{display:inline-block;padding:10px 24px;border-radius:999px;background:rgba(72,215,255,.16);border:1px solid rgba(99,225,255,.44);color:#8eeeff;font-size:1rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:18px}
+h1{font-size:clamp(3.2rem,6vw,6rem);line-height:1.02;letter-spacing:3px;font-weight:900;text-transform:uppercase;text-shadow:0 8px 24px rgba(0,0,0,.35)}
+.title-highlight{display:block;color:#ffd75b;white-space:nowrap}
+h2{font-size:clamp(2.1rem,3.4vw,3.6rem);color:#ffd75b;text-transform:uppercase;letter-spacing:2px;margin-bottom:12px}
+.subtitle{margin:18px auto 0;max-width:950px;font-size:clamp(1.15rem,1.6vw,1.55rem);line-height:1.5;color:rgba(255,255,255,.82)}
+.info-row{margin:24px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:940px}
+.info-box{padding:16px 14px;border-radius:18px;background:rgba(3,15,35,.42);border:1px solid rgba(255,255,255,.12);font-weight:700;font-size:1.05rem}
+.info-box span{display:block;color:#78e8ff;font-size:.82rem;letter-spacing:1.4px;text-transform:uppercase;margin-bottom:5px}
+button{font-family:inherit}
+.start-button,.small-button,.nav-button,.submit-button{position:relative;padding:13px 34px;border:0;border-radius:999px;font-size:1.05rem;font-weight:900;letter-spacing:1.1px;text-transform:uppercase;cursor:pointer}
+.start-button,.small-button,.submit-button{background:linear-gradient(135deg,#ffd75b,#ffb52e);color:#09213d;box-shadow:0 18px 35px rgba(255,184,46,.32)}
+.start-button,.small-button{margin-top:24px}
+.nav-button{background:rgba(142,238,255,.14);border:1px solid rgba(142,238,255,.3);color:#8eeeff}
+.nav-button:disabled{opacity:.35;cursor:not-allowed}
+.test-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.question-count{color:#8eeeff;font-size:1.12rem;font-weight:900;letter-spacing:1.5px;text-transform:uppercase}
+.note{max-width:1000px;margin:14px auto 0;color:rgba(255,255,255,.72);line-height:1.6;font-size:1.05rem}
+.test-layout{flex:1;display:grid;grid-template-columns:1.38fr .62fr;gap:18px;min-height:0}
+.question-panel,.choices-panel{height:100%;min-height:0;padding:22px 24px;border-radius:24px;background:rgba(2,13,31,.55);border:1px solid rgba(255,255,255,.16);box-shadow:inset 0 0 24px rgba(120,232,255,.06);overflow:auto}
+.panel-label{display:inline-block;margin-bottom:10px;padding:7px 13px;border-radius:999px;background:rgba(142,238,255,.12);border:1px solid rgba(142,238,255,.25);color:#8eeeff;font-size:.82rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase}
+.question-text{font-size:clamp(1.25rem,1.75vw,1.9rem);line-height:1.32;font-weight:600;color:white}
+.choice-button{width:100%;display:flex;align-items:center;gap:10px;margin-bottom:10px;padding:13px 15px;min-height:54px;border-radius:17px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.08);color:white;cursor:pointer;font-size:1rem;font-weight:700;text-align:left}
+.choice-button:hover,.choice-button.selected{border-color:rgba(255,215,91,.8);background:rgba(255,215,91,.16)}
+.choice-letter{width:34px;height:34px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:rgba(142,238,255,.16);color:#8eeeff;flex:0 0 auto;font-size:1rem;font-weight:800}
+.test-nav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:8px}
+.progress-strip{display:flex;gap:5px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+.progress-dot{width:24px;height:24px;border-radius:6px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);color:rgba(255,255,255,.75);font-size:.7rem;font-weight:900;cursor:pointer}
+.progress-dot.answered{background:rgba(142,238,255,.2);color:#8eeeff;border-color:rgba(142,238,255,.42)}
+.progress-dot.active{background:rgba(255,215,91,.28);color:#ffd75b;border-color:rgba(255,215,91,.75)}
+.visual-box{width:100%;margin:6px 0 14px}
+.visual-title{font-size:.88rem;font-weight:900;letter-spacing:1px;text-transform:uppercase;color:#8eeeff;margin-bottom:8px}
+.visual-stage{position:relative;width:100%;max-width:540px;height:230px;margin:0 auto;border-radius:18px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);overflow:hidden}
+.visual-svg{width:100%;height:100%;display:block}
+.geom-label{position:absolute;padding:4px 9px;border-radius:12px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.16);color:white;font-weight:900;font-size:.98rem;text-align:center;white-space:nowrap}
+.match-row{display:grid;grid-template-columns:1fr 90px;gap:12px;align-items:center;margin:10px 0;padding:12px;border-radius:16px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12)}
+.match-number{display:inline-flex;width:30px;height:30px;border-radius:50%;align-items:center;justify-content:center;background:rgba(142,238,255,.16);color:#8eeeff;font-weight:900;margin-right:10px}
+.match-select{width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.24);background:#08213d;color:white;font-weight:800;text-align:center}
+.match-choice{display:flex;align-items:center;gap:12px;margin-bottom:10px;padding:14px;border-radius:16px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);line-height:1.45}
+.footer{position:fixed;bottom:12px;left:50%;transform:translateX(-50%);z-index:20;color:rgba(255,255,255,.78);font-size:1.05rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;width:100%;text-align:center;text-shadow:0 2px 8px rgba(0,0,0,.45)}
+.result-name{font-size:clamp(2rem,3vw,3.2rem);font-weight:950;text-transform:uppercase;margin-top:14px}
+.result-number{margin-top:20px;font-size:clamp(5rem,10vw,9rem);color:#ffd75b;font-weight:950;line-height:.95}
+@media(max-width:900px){body{overflow:auto}.screen{height:auto;min-height:100vh;overflow:visible}.card{height:auto;min-height:90vh;aspect-ratio:auto;padding:28px 20px}.info-row,.test-layout{grid-template-columns:1fr}.question-panel,.choices-panel{overflow:visible}}
+</style>
+
+<script>
+window.MathJax={tex:{inlineMath:[["$","$"]]},svg:{fontCache:"global"}};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+
+<body>
+<main class="screen" id="app"></main>
+
+<script>
+const GOOGLE_SCRIPT_URL="";
+const M=s=>`$${s}$`;
+const FR=(a,b)=>`\\frac{${a}}{${b}}`;
+
+let current=0;
+let answers=[];
+let floatingTimer=null;
+let questions=makeQuestionSet();
+
+function bgHTML(){
+  return `<div class="bg" id="bg">
+    <div class="grid"></div>
+    <div class="stream" style="top:18%;font-size:2.2rem">2x + 7 = 31 &nbsp;&nbsp; 3(x - 4) = 18 &nbsp;&nbsp; y = mx + b &nbsp;&nbsp;</div>
+    <div class="stream" style="top:74%;font-size:1.8rem;animation-direction:reverse">x² + 5x &nbsp;&nbsp; 4a - 2 = 18 &nbsp;&nbsp; (2x+3)(x+4) &nbsp;&nbsp;</div>
+    <div class="orb" style="width:260px;height:260px;top:8%;left:12%"></div>
+    <div class="orb" style="width:340px;height:340px;bottom:2%;right:8%"></div>
+  </div>
+  <div class="footer">© 2026 Delta Matemática | Luis Ramos Jr. All Rights Reserved.</div>`;
+}
+
+function startFloat(){
+  clearInterval(floatingTimer);
+  const bg=document.getElementById("bg");
+  if(!bg) return;
+  const symbols=["x","y","a","b","2x+3","3n=21","x²","2(x+3)","4x-7=21","(x+2)(x+5)","d=vt","F=9/5C+32"];
+  function add(){
+    const d=document.createElement("div");
+    d.className="float-symbol";
+    d.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+    d.style.left=Math.random()*100+"vw";
+    d.style.fontSize=(22+Math.random()*36)+"px";
+    d.style.animationDuration=(12+Math.random()*10)+"s";
+    bg.appendChild(d);
+    setTimeout(()=>d.remove(),23000);
+  }
+  for(let i=0;i<18;i++) add();
+  floatingTimer=setInterval(add,1500);
+}
+
+function renderOpening(){
+  app.innerHTML=`${bgHTML()}
+  <section class="card">
+    <div class="top-label">8° Grade Mathematics</div>
+    <h1>Algebra<span class="title-highlight">Practice Test</span></h1>
+    <p class="subtitle">This preview includes 25 generated Grade 8 algebra question types. Each test randomizes the question order. When students click Try Again, the same skills appear with new values and a new order.</p>
+    <div class="info-row">
+      <div class="info-box"><span>Level</span>Grade 8</div>
+      <div class="info-box"><span>Questions</span>25</div>
+      <div class="info-box"><span>Format</span>Practice Test</div>
+    </div>
+    <button class="start-button" onclick="beginTest()">Start Test</button>
+  </section>`;
+  startFloat();
+}
+
+function beginTest(){
+  answers=questions.map(q=>q.type==="matching"?Array(q.prompts.length).fill(""):null);
+  current=0;
+  renderQuestion();
+}
+
+function renderQuestion(){
+  const q=questions[current];
+  const ans=answers[current];
+  const answered=questions.filter((x,i)=>isAnswered(x,answers[i])).length;
+
+  app.innerHTML=`${bgHTML()}
+  <section class="card test-card">
+    <div class="test-header">
+      <div>
+        <div class="question-count">Question ${current+1} of ${questions.length}</div>
+        <div class="note" style="margin:4px 0 0">Answered: ${answered} of ${questions.length}</div>
+      </div>
+    </div>
+
+    <div class="test-layout">
+      <div class="question-panel">
+        <div class="panel-label">Question</div>
+        ${renderQuestionPanel(q,ans)}
+      </div>
+      <div class="choices-panel">
+        <div class="panel-label">Answer Area</div>
+        ${renderAnswerPanel(q,ans)}
+      </div>
+    </div>
+
+    <div class="test-nav">
+      <button class="nav-button" onclick="move(-1)" ${current===0?"disabled":""}>Back</button>
+      <button class="nav-button" onclick="move(1)" ${current===questions.length-1?"disabled":""}>Next</button>
+      <button class="submit-button" onclick="submitTest()">Submit</button>
+    </div>
+
+    <div class="progress-strip">
+      ${questions.map((q,i)=>`<button class="progress-dot ${isAnswered(q,answers[i])?"answered":""} ${i===current?"active":""}" onclick="go(${i})">${i+1}</button>`).join("")}
+    </div>
+  </section>`;
+  startFloat();
+  typeset();
+}
+
+function renderQuestionPanel(q,ans){
+  if(q.type==="matching"){
+    return `<div class="question-text">${q.q}</div>`+
+    q.prompts.map((p,i)=>`<div class="match-row">
+      <div><span class="match-number">${i+1}</span>${p}</div>
+      <select class="match-select" onchange="setMatch(${i},this.value)">
+        <option value="">Choose</option>
+        ${q.choices.map(c=>`<option value="${c[0]}" ${ans[i]===c[0]?"selected":""}>${c[0]}</option>`).join("")}
+      </select>
+    </div>`).join("");
+  }
+  return `${renderVisual(q)}<div class="question-text">${q.q}</div>`;
+}
+
+function renderAnswerPanel(q,ans){
+  if(q.type==="matching"){
+    return q.choices.map(c=>`<div class="match-choice"><span class="choice-letter">${c[0]}</span><span>${c[1]}</span></div>`).join("");
+  }
+  return q.choices.map((c,i)=>`<button class="choice-button ${ans===c?"selected":""}" onclick="selectChoice(${i})"><span class="choice-letter">${String.fromCharCode(65+i)}</span><span>${c}</span></button>`).join("");
+}
+
+function renderVisual(q){
+  if(q.visual==="rectangle"){
+    return `<div class="visual-box"><div class="visual-title">Figure</div><div class="visual-stage">
+      <svg class="visual-svg" viewBox="0 0 420 220">
+        <rect x="95" y="50" width="230" height="110" fill="rgba(255,255,255,.04)" stroke="rgba(142,238,255,.95)" stroke-width="4"/>
+      </svg>
+      <div class="geom-label" style="left:50%;top:12px;transform:translateX(-50%)">${q.labels[0]}</div>
+      <div class="geom-label" style="right:22px;top:50%;transform:translateY(-50%)">${q.labels[1]}</div>
+    </div></div>`;
+  }
+
+  if(q.visual==="square"){
+    return `<div class="visual-box"><div class="visual-title">Figure</div><div class="visual-stage">
+      <svg class="visual-svg" viewBox="0 0 420 220">
+        <rect x="135" y="38" width="150" height="150" fill="rgba(255,255,255,.04)" stroke="rgba(142,238,255,.95)" stroke-width="4"/>
+      </svg>
+      <div class="geom-label" style="left:50%;bottom:12px;transform:translateX(-50%)">${q.labels[0]}</div>
+    </div></div>`;
+  }
+
+  if(q.visual==="splitArea"){
+    return `
+      <div class="visual-box">
+        <div class="visual-title">Figure</div>
+
+        <div class="visual-stage" style="height:245px;display:flex;align-items:center;justify-content:center;overflow:hidden;">
+          <div style="
+            display:grid;
+            grid-template-columns:58px 125px 125px;
+            grid-template-rows:36px 78px 78px;
+            align-items:center;
+            justify-items:center;
+          ">
+            <div></div>
+
+            <div class="geom-label" style="position:static;transform:none;">${q.topLabels[0]}</div>
+            <div class="geom-label" style="position:static;transform:none;">${q.topLabels[1]}</div>
+
+            <div class="geom-label" style="position:static;transform:none;">${q.leftLabels[0]}</div>
+
+            <div style="
+              width:125px;
+              height:78px;
+              border-left:4px solid rgba(142,238,255,.95);
+              border-top:4px solid rgba(142,238,255,.95);
+              border-right:2px solid rgba(255,255,255,.85);
+              border-bottom:2px solid rgba(255,255,255,.85);
+              background:rgba(255,255,255,.04);
+            "></div>
+
+            <div style="
+              width:125px;
+              height:78px;
+              border-top:4px solid rgba(142,238,255,.95);
+              border-right:4px solid rgba(142,238,255,.95);
+              border-left:2px solid rgba(255,255,255,.85);
+              border-bottom:2px solid rgba(255,255,255,.85);
+              background:rgba(255,255,255,.04);
+            "></div>
+
+            <div class="geom-label" style="position:static;transform:none;">${q.leftLabels[1]}</div>
+
+            <div style="
+              width:125px;
+              height:78px;
+              border-left:4px solid rgba(142,238,255,.95);
+              border-bottom:4px solid rgba(142,238,255,.95);
+              border-right:2px solid rgba(255,255,255,.85);
+              border-top:2px solid rgba(255,255,255,.85);
+              background:rgba(255,255,255,.04);
+            "></div>
+
+            <div style="
+              width:125px;
+              height:78px;
+              border-right:4px solid rgba(142,238,255,.95);
+              border-bottom:4px solid rgba(142,238,255,.95);
+              border-left:2px solid rgba(255,255,255,.85);
+              border-top:2px solid rgba(255,255,255,.85);
+              background:rgba(255,255,255,.04);
+            "></div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  return "";
+}
+
+function setMatch(i,v){answers[current][i]=v;renderQuestion()}
+function selectChoice(i){answers[current]=questions[current].choices[i];renderQuestion()}
+function move(d){current+=d;renderQuestion()}
+function go(i){current=i;renderQuestion()}
+
+function isAnswered(q,a){
+  if(q.type==="matching") return Array.isArray(a)&&a.every(Boolean);
+  return a!==null;
+}
+
+function isCorrect(q,a){
+  if(q.type==="matching") return q.answer.every((v,i)=>a[i]===v);
+  return a===q.answer;
+}
+
+function submitTest(){
+  const missing=questions.findIndex((q,i)=>!isAnswered(q,answers[i]));
+
+  if(missing>=0){
+    alert(`Please answer all questions before submitting. Question ${missing+1} is still unanswered.`);
+    current=missing;
+    renderQuestion();
+    return;
+  }
+
+  renderSubmitConfirmation();
+}
+
+function renderSubmitConfirmation(){
+  const answered=questions.filter((q,i)=>isAnswered(q,answers[i])).length;
+
+  app.innerHTML=`${bgHTML()}
+  <section class="card">
+    <div class="top-label">Confirm Submission</div>
+
+    <h2>Ready to Submit?</h2>
+
+    <p class="note" style="font-size:1.5rem;font-weight:800;color:#8eeeff">
+      You answered ${answered} of ${questions.length} questions.
+    </p>
+
+    <p class="note" style="font-size:1.2rem">
+      Please choose one option below. You may review your answers before submitting, or confirm your submission now.
+    </p>
+
+    <div style="
+      width:min(820px,100%);
+      margin:26px auto 0;
+      padding:22px 28px;
+      border-radius:24px;
+      background:rgba(2,13,31,.55);
+      border:1px solid rgba(142,238,255,.28);
+      color:rgba(255,255,255,.84);
+      line-height:1.55;
+      font-size:1.15rem;
+      font-weight:700;
+    ">
+      Once you confirm, your score will be calculated and shown on the next screen.
+    </div>
+
+    <div style="display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:32px">
+      <button class="nav-button" onclick="current=0;renderQuestion()">Review Answers</button>
+      <button class="submit-button" onclick="finalSubmit()">Confirm Submit</button>
+    </div>
+  </section>`;
+
+  startFloat();
+}
+
+function finalSubmit(){
+  const score=questions.reduce((s,q,i)=>s+(isCorrect(q,answers[i])?1:0),0);
+  const pct=Math.round(score/questions.length*100);
+  submitScore(score,pct);
+
+  const remark=pct>=70?"CONGRATULATIONS":"TRY AGAIN";
+  const color=pct>=70?"#ffd75b":"#ff9b9b";
+
+  app.innerHTML=`${bgHTML()}
+  <section class="card">
+    <div class="top-label">Result</div>
+
+    <div class="result-name">Practice Test Result</div>
+
+    <div class="result-number">${score} / ${questions.length}</div>
+
+    <p class="note" style="font-size:2rem!important;font-weight:950;color:#8eeeff">
+      Percentage: ${pct}%
+    </p>
+
+    <p class="note" style="font-size:2.5rem!important;font-weight:950;color:${color};letter-spacing:1.5px;text-transform:uppercase">
+      ${remark}
+    </p>
+
+    <p class="note" style="font-size:1.15rem">
+      You may try again with a new set of values, or go back to the home screen.
+    </p>
+
+    <div style="display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:26px">
+      <button class="small-button" onclick="tryAgain()">Try Again</button>
+      <button class="nav-button" onclick="renderOpening()">Back to Home</button>
+    </div>
+  </section>`;
+
+  startFloat();
+}
+
+function tryAgain(){
+  questions=makeQuestionSet();
+  answers=questions.map(q=>q.type==="matching"?Array(q.prompts.length).fill(""):null);
+  current=0;
+  renderQuestion();
+}
+
+function makeQuestionSet(){
+  const questionGenerators = [
+    generateQuestion1,
+    generateQuestion2,
+    generateQuestion3,
+    generateQuestion4,
+    generateQuestion5,
+    generateQuestion6,
+    generateQuestion7,
+    generateQuestion8,
+    generateQuestion9,
+    generateQuestion10,
+    generateQuestion11,
+    generateQuestion12,
+    generateQuestion13,
+    generateQuestion14,
+    generateQuestion15,
+    generateQuestion16,
+    generateQuestion17,
+    generateQuestion18,
+    generateQuestion19,
+    generateQuestion20,
+    generateQuestion21,
+    generateQuestion22,
+    generateQuestion23,
+    generateQuestion24,
+    generateQuestion25
+  ];
+
+  return shuffle([...questionGenerators]).map(generator => generator());
+}
+
+function generateQuestion1(){
+  const names=["Mateo","Sofía","Camila","Tomás","Valentina","Diego","Martina","Lucas","Antonia","Benjamín"];
+  const name=randomItem(names);
+  const age=rand(10,16);
+  const yrs=rand(3,9);
+  const future=age+yrs;
+  const versions=[
+    {q:`${name} is ${M(age)} years old now. How old will ${name} be in ${M(yrs)} years?`,a:future,e:false},
+    {q:`${name} is ${M("x")} years old now. Which expression represents ${name}'s age in ${M(yrs)} years?`,a:`x+${yrs}`,e:true},
+    {q:`In ${M(yrs)} years, ${name} will be ${M(future)} years old. How old is ${name} now?`,a:age,e:false},
+    {q:`${name}'s current age is represented by ${M("x")}. Which expression shows ${name}'s age ${M(yrs)} years from now?`,a:`x+${yrs}`,e:true}
+  ];
+  const v=randomItem(versions);
+  if(v.e){
+    const choices=uniqueChoices([M(v.a),M(`x-${yrs}`),M(`${yrs}x`),M(`x+${yrs+2}`)],()=>M(`x+${rand(1,12)}`));
+    return {type:"mc",q:v.q,choices,answer:M(v.a)};
+  }
+  return {type:"mc",q:v.q,choices:numericChoices(v.a,2),answer:M(v.a)};
+}
+
+function generateQuestion2(){
+  const a=randNonZero(-9,9), b=randNonZero(-9,9), c=randNonZero(-9,9), d=randNonZero(-9,9);
+  const op=randomItem(["A+B","A-B","B-A"]);
+  let xc,yc;
+  if(op==="A+B"){xc=a+c;yc=b+d}
+  else if(op==="A-B"){xc=a-c;yc=b-d}
+  else{xc=c-a;yc=d-b}
+  const correct=expressionXY(xc,yc);
+  return {
+    type:"mc",
+    q:`Let ${M(`A=${expressionXY(a,b)}`)} and ${M(`B=${expressionXY(c,d)}`)}. Find ${M(op)}.`,
+    choices:uniqueChoices([M(correct),M(expressionXY(xc+randNonZero(-3,3),yc)),M(expressionXY(xc,yc+randNonZero(-3,3))),M(expressionXY(xc+randNonZero(-2,2),yc+randNonZero(-2,2)))],()=>M(expressionXY(randNonZero(-9,9),randNonZero(-9,9)))),
+    answer:M(correct)
+  };
+}
+
+function generateQuestion3(){
+  const terms=[
+    {v:"x",c:randNonZero(-8,8)},
+    {v:"y",c:randNonZero(-8,8)},
+    {v:"x^2",c:randNonZero(-8,8)},
+    {v:"y^2",c:randNonZero(-8,8)},
+    {v:"x",c:randNonZero(-8,8)},
+    {v:"y",c:randNonZero(-8,8)}
+  ];
+  const original=formatExpression(shuffle([...terms]));
+  const total={"x^2":0,"y^2":0,x:0,y:0};
+  terms.forEach(t=>total[t.v]+=t.c);
+  const correct=formatExpression([{v:"x^2",c:total["x^2"]},{v:"y^2",c:total["y^2"]},{v:"x",c:total.x},{v:"y",c:total.y}]);
+  const w1=formatExpression([{v:"x^2",c:total["x^2"]+randNonZero(-2,2)},{v:"y^2",c:total["y^2"]},{v:"x",c:total.x},{v:"y",c:total.y}]);
+  const w2=formatExpression([{v:"x^2",c:total["x^2"]},{v:"y^2",c:total["y^2"]+randNonZero(-2,2)},{v:"x",c:total.x},{v:"y",c:total.y}]);
+  const w3=formatExpression([{v:"x^2",c:total["x^2"]},{v:"y^2",c:total["y^2"]},{v:"x",c:total.x+randNonZero(-2,2)},{v:"y",c:total.y+randNonZero(-2,2)}]);
+  return {type:"mc",q:`Simplify the expression: ${M(original)}`,choices:uniqueChoices([M(correct),M(w1),M(w2),M(w3)],()=>M(formatExpression([{v:"x^2",c:randNonZero(-8,8)},{v:"y",c:randNonZero(-8,8)}]))),answer:M(correct)};
+}
+
+function generateQuestion4(){
+  const shape=Math.random()<.5?"rectangle":"square";
+  const x=rand(2,8);
+  if(shape==="rectangle"){
+    const a1=rand(2,6),b1=rand(1,9),a2=rand(2,6),b2=rand(1,9);
+    const L=linearExpression(a1,b1), W=linearExpression(a2,b2);
+    const p=2*((a1*x+b1)+(a2*x+b2));
+    return {type:"mc",visual:"rectangle",labels:[M(L),M(W)],q:`A rectangle has a length of ${M(L)} centimeters and a width of ${M(W)} centimeters. Find its perimeter when ${M(`x=${x}`)}.`,choices:numericChoices(p,4),answer:M(p)};
+  }
+  const a=rand(2,7),b=rand(1,9);
+  const S=linearExpression(a,b);
+  const p=4*(a*x+b);
+  return {type:"mc",visual:"square",labels:[M(S)],q:`A square has a side length of ${M(S)} centimeters. Find its perimeter when ${M(`x=${x}`)}.`,choices:numericChoices(p,4),answer:M(p)};
+}
+
+function generateQuestion5(){
+  const shape=Math.random()<.5?"rectangle":"square";
+  if(shape==="rectangle"){
+    const a1=rand(2,7),b1=rand(1,9),a2=rand(2,7),b2=rand(1,9);
+    const L=linearExpression(a1,b1), W=linearExpression(a2,b2);
+    const correct=linearExpression(2*(a1+a2),2*(b1+b2));
+    return {type:"mc",visual:"rectangle",labels:[M(L),M(W)],q:`A rectangle has a length of ${M(L)} centimeters and a width of ${M(W)} centimeters. Which expression represents its perimeter?`,choices:uniqueChoices([M(correct),M(linearExpression(a1+a2,b1+b2)),M(linearExpression(2*a1+a2,2*b1+b2)),M(linearExpression(2*(a1+a2),2*(b1+b2)+randNonZero(-4,4)))],()=>M(linearExpression(rand(2,20),rand(1,30)))),answer:M(correct)};
+  }
+  const a=rand(2,7),b=rand(1,9),S=linearExpression(a,b),correct=linearExpression(4*a,4*b);
+  return {type:"mc",visual:"square",labels:[M(S)],q:`A square has a side length of ${M(S)} centimeters. Which expression represents its perimeter?`,choices:uniqueChoices([M(correct),M(linearExpression(a,b)),M(linearExpression(2*a,2*b)),M(linearExpression(4*a,4*b+randNonZero(-4,4)))],()=>M(linearExpression(rand(2,20),rand(1,30)))),answer:M(correct)};
+}
+
+function generateQuestion6(){
+  const a=rand(2,8),b=rand(2,8),c=rand(1,9),sign=Math.random()<.5?"+":"-";
+  const first=a*b, second=a*c, orig=`${a}x(${b}x${sign}${c})`;
+  const correct=sign==="+"?`${first}x^2+${second}x`:`${first}x^2-${second}x`;
+  const w1=sign==="+"?`${a+b}x^2+${a+c}x`:`${a+b}x^2-${a+c}x`;
+  const w2=sign==="+"?`${first}x+${second}x`:`${first}x-${second}x`;
+  const w3=sign==="+"?`${first}x^2+${c}x`:`${first}x^2-${c}x`;
+  return {type:"mc",q:`Simplify using the distributive property: ${M(orig)}`,choices:uniqueChoices([M(correct),M(w1),M(w2),M(w3)],()=>M(`${rand(2,40)}x^2+${rand(2,40)}x`)),answer:M(correct)};
+}
+
+function generateQuestion7(){
+  const equations=[];
+  const solutions=[];
+  while(equations.length<5){
+    const a=rand(2,9),x=rand(2,12),b=rand(1,15),plus=Math.random()<.5;
+    if(solutions.includes(x)) continue;
+    const c=plus?a*x+b:a*x-b;
+    const eq=plus?`${a}x+${b}=${c}`:`${a}x-${b}=${c}`;
+    equations.push({equation:M(eq),solution:x});
+    solutions.push(x);
+  }
+  const letters=["A","B","C","D","E"];
+  const shuffled=shuffle([...solutions]);
+  const choices=shuffled.map((value,index)=>[letters[index],M(`x=${value}`)]);
+  const correctLetters=equations.map(item=>letters[shuffled.indexOf(item.solution)]);
+  return {
+    type:"matching",
+    q:"Solve each two-step equation. Choose the letter of the correct solution.",
+    prompts:equations.map(item=>item.equation),
+    choices,
+    answer:correctLetters
+  };
+}
+
+function generateQuestion8(){
+  const a=rand(1,6),b=rand(1,9),c=rand(1,6),d=rand(1,9);
+  const orig=`(${linearExpression(a,b)})(${linearExpression(c,d)})`;
+  const correct=quadraticExpression(a*c,a*d+b*c,b*d);
+  return {type:"mc",q:`Find the product: ${M(orig)}`,choices:uniqueChoices([M(correct),M(quadraticExpression(a*c,a*d,b*d)),M(quadraticExpression(a*c,b*c,b*d)),M(quadraticExpression(a+c,a*d+b*c,b*d))],()=>M(quadraticExpression(rand(1,20),rand(1,40),rand(1,50)))),answer:M(correct)};
+}
+
+function generateQuestion9(){
+  const a=rand(1,6),b=rand(1,9),c=rand(1,6),d=rand(1,9);
+  const L=linearExpression(a,b), W=linearExpression(c,d);
+  const correct=quadraticExpression(a*c,a*d+b*c,b*d);
+  return {type:"mc",visual:"rectangle",labels:[M(L),M(W)],q:`A rectangle has side lengths ${M(L)} centimeters and ${M(W)} centimeters. Which expression represents its area?`,choices:uniqueChoices([M(correct),M(quadraticExpression(a*c,a*d,b*d)),M(quadraticExpression(a*c,b*c,b*d)),M(quadraticExpression(a+c,a*d+b*c,b*d))],()=>M(quadraticExpression(rand(1,20),rand(1,40),rand(1,50)))),answer:M(correct)};
+}
+
+function generateQuestion10(){
+  const x=randNonZero(-8,8);
+  let a,c;
+  do{a=randNonZero(-9,9);c=randNonZero(-9,9)}while(a===c);
+  const b=randNonZero(-20,20);
+  const d=a*x+b-c*x;
+  const eq=`${linearTerm(a,"x")}${signedNumber(b)}=${linearTerm(c,"x")}${signedNumber(d)}`;
+  return {type:"mc",q:`Solve the equation: ${M(eq)}`,choices:uniqueNumericChoices(x,[x,x+1,x-1,-x]).map(n=>M(n)),answer:M(x)};
+}
+
+function generateQuestion11(){
+  const x=randNonZero(-8,8);
+  const a=randNonZero(-9,9),b=randNonZero(-9,9),c=randNonZero(-9,9);
+  const form=Math.random()<.5?"plusLeft":"minusLeft";
+  let d,equation;
+  if(form==="plusLeft"){
+    d=x*(a+b+c);
+    equation=`${linearTerm(a,"x")}${signedTerm(b,"x")}=${d}${signedTerm(-c,"x")}`;
+  }else{
+    d=x*(a-b-c);
+    equation=`${linearTerm(a,"x")}${signedTerm(-b,"x")}=${d}${signedTerm(c,"x")}`;
+  }
+  return {type:"mc",q:`Solve the equation: ${M(equation)}`,choices:uniqueNumericChoices(x,[x,x+1,x-1,-x]).map(n=>M(n)),answer:M(x)};
+}
+
+function generateQuestion12(){
+  let x,a,b,c,d,e,f,leftCoeff,leftConst,rightCoeff,numerator;
+  for(let tries=0;tries<500;tries++){
+    x=randNonZero(-6,8);
+    a=randNonZero(-6,6); b=randNonZero(-6,6); c=randNonZero(-9,9);
+    d=randNonZero(-6,6); e=randNonZero(-6,6);
+    leftCoeff=a*b; leftConst=a*c; rightCoeff=d*e;
+    numerator=leftCoeff*x+leftConst-rightCoeff*x;
+    if(numerator%d!==0) continue;
+    f=numerator/d;
+    if(f===0||Math.abs(f)>12||leftCoeff===rightCoeff) continue;
+    const eq=`${a}(${linearExpression(b,c)})=${d}(${linearExpression(e,f)})`;
+    return {type:"mc",q:`Solve the equation: ${M(eq)}`,choices:uniqueNumericChoices(x,[x,x+1,x-1,-x]).map(n=>M(n)),answer:M(x)};
+  }
+  return {type:"mc",q:`Solve the equation: ${M("3(2x+5)=2(4x+3)")}`,choices:[M("3"),M("4"),M("5"),M("6")],answer:M("3")};
+}
+
+function generateQuestion13(){
+  let x,a,b,c,d,e,f,leftCoeff,leftConst,rightCoeff,rightConst,leftInside,rightInside,leftPattern,rightPattern;
+  const leftPatterns=["b+cx","cx+b","b-cx","cx-b"];
+  const rightPatterns=["ex+f","f+ex","ex-f","f-ex"];
+  for(let tries=0;tries<700;tries++){
+    x=randNonZero(-6,8);
+    a=randNonZero(-6,6); b=rand(1,9); c=rand(1,6);
+    d=randNonZero(-6,6); e=rand(1,6);
+    leftPattern=randomItem(leftPatterns);
+    rightPattern=randomItem(rightPatterns);
+
+    if(leftPattern==="b+cx"){leftCoeff=a*c;leftConst=a*b;leftInside=`${b}+${c}x`}
+    if(leftPattern==="cx+b"){leftCoeff=a*c;leftConst=a*b;leftInside=`${c}x+${b}`}
+    if(leftPattern==="b-cx"){leftCoeff=-a*c;leftConst=a*b;leftInside=`${b}-${c}x`}
+    if(leftPattern==="cx-b"){leftCoeff=a*c;leftConst=-a*b;leftInside=`${c}x-${b}`}
+
+    if(rightPattern==="ex+f"){
+      rightCoeff=d*e;
+      const num=leftCoeff*x+leftConst-rightCoeff*x;
+      if(num%d!==0) continue;
+      f=num/d;
+      if(f===0||Math.abs(f)>12) continue;
+      rightConst=d*f;
+      rightInside=linearExpression(e,f);
+    }
+
+    if(rightPattern==="f+ex"){
+      rightCoeff=d*e;
+      const num=leftCoeff*x+leftConst-rightCoeff*x;
+      if(num%d!==0) continue;
+      f=num/d;
+      if(f===0||Math.abs(f)>12) continue;
+      rightConst=d*f;
+      rightInside=`${f}${signedTerm(e,"x")}`;
+    }
+
+    if(rightPattern==="ex-f"){
+      rightCoeff=d*e;
+      const num=-(leftCoeff*x+leftConst-rightCoeff*x);
+      if(num%d!==0) continue;
+      f=num/d;
+      if(f===0||Math.abs(f)>12) continue;
+      rightConst=-d*f;
+      rightInside=`${e}x-${Math.abs(f)}`;
+    }
+
+    if(rightPattern==="f-ex"){
+      rightCoeff=-d*e;
+      const num=leftCoeff*x+leftConst+d*e*x;
+      if(num%d!==0) continue;
+      f=num/d;
+      if(f===0||Math.abs(f)>12) continue;
+      rightConst=d*f;
+      rightInside=`${f}-${e}x`;
+    }
+
+    if(leftCoeff===rightCoeff||Math.abs(leftConst)>90||Math.abs(rightConst)>90) continue;
+    const eq=`${a}(${leftInside})=${d}(${rightInside})`;
+    return {type:"mc",q:`Solve the equation: ${M(eq)}`,choices:uniqueNumericChoices(x,[x,x+1,x-1,-x]).map(n=>M(n)),answer:M(x)};
+  }
+  return {type:"mc",q:`Solve the equation: ${M("3(5+2x)=2(4x+7)")}`,choices:[M("-1"),M("1"),M("2"),M("3")],answer:M("1")};
+}
+
+function generateQuestion14(){
+  const a = rand(2,9);
+  const b = rand(2,9);
+
+  const topLabels = [M("x"), M(String(a))];
+  const leftLabels = [M("x"), M(String(b))];
+
+  const correct = quadraticExpression(1, a + b, a * b);
+
+  const wrong1 = quadraticExpression(1, a, a * b);
+  const wrong2 = quadraticExpression(1, b, a * b);
+  const wrong3 = linearExpression(2, a + b);
+
+  return {
+    type:"mc",
+    visual:"splitArea",
+    topLabels:topLabels,
+    leftLabels:leftLabels,
+    q:`Find the area of the figure.`,
+    choices:uniqueChoices(
+      [M(correct), M(wrong1), M(wrong2), M(wrong3)],
+      ()=>M(quadraticExpression(rand(1,4),rand(2,20),rand(4,60)))
+    ),
+    answer:M(correct)
+  };
+}
+
+function generateQuestion15(){
+  const first=rand(5,30);
+  const nums=[first,first+1,first+2,first+3];
+  const sum=nums.reduce((a,b)=>a+b,0);
+  const positions=["first","second","third","fourth"];
+  const givenIndex=rand(0,3);
+  let targetIndex=rand(0,3);
+  while(targetIndex===givenIndex) targetIndex=rand(0,3);
+  const correct=nums[targetIndex];
+  return {type:"mc",q:`The sum of four consecutive numbers is ${M(sum)}. If the ${positions[givenIndex]} number is ${M(nums[givenIndex])}, what is the ${positions[targetIndex]} number?`,choices:numericChoices(correct,1),answer:M(correct)};
+}
+
+function generateQuestion16(){
+  const form=randomItem(["form1","form2","form3"]);
+  let x,a,b,c,d,e,equation;
+  for(let tries=0;tries<700;tries++){
+    x=randNonZero(-8,8); b=rand(2,9); d=rand(2,9); a=randNonZero(-9,9); e=randNonZero(-6,6);
+    if(form==="form1"){
+      const num=d*(a*x-e*x*b);
+      if(num%b!==0) continue;
+      c=num/b;
+      if(c===0||Math.abs(c)>30) continue;
+      equation=`${fractionTerm(a,"x",b)}=${FR(c,d)}${signedTerm(e,"x")}`;
+    }
+    if(form==="form2"){
+      const num=d*(a*x-e*x*b);
+      if(num%b!==0) continue;
+      c=Math.abs(num/b);
+      if(c===0||Math.abs(c)>30) continue;
+      const leftValue=(a*x)/b-c/d;
+      if(leftValue!==e*x) continue;
+      equation=`${fractionTerm(a,"x",b)}-${FR(c,d)}=${linearTerm(e,"x")}`;
+    }
+    if(form==="form3"){
+      const num=d*(x-a*x*b);
+      if(num%b!==0) continue;
+      c=num/b;
+      if(c===0||Math.abs(c)>30) continue;
+      equation=`${linearTerm(a,"x")}${signedFraction(c,d)}=${FR("x",b)}`;
+    }
+    return {type:"mc",q:`Solve the equation: ${M(equation)}`,choices:uniqueNumericChoices(x,[x,x+1,x-1,-x]).map(n=>M(n)),answer:M(x)};
+  }
+  return {type:"mc",q:`Solve the equation: ${M(`${FR("3x","4")}=${FR("2","5")}+x`)}`,choices:[M("-8"),M("-6"),M("6"),M("8")],answer:M("-8")};
+}
+
+function generateQuestion17(){
+  let x,a,b,c,d,equation;
+  for(let tries=0;tries<500;tries++){
+    x=randNonZero(-10,10);
+    b=rand(2,9); d=rand(2,9);
+    if(b===d) continue;
+    a=randNonZero(-12,12);
+    const num=d*x+d*a-b*x;
+    if(num%b!==0) continue;
+    c=num/b;
+    if(c===0||Math.abs(c)>15) continue;
+    equation=`${FR(`x${signedNumber(a)}`,b)}=${FR(`x${signedNumber(c)}`,d)}`;
+    return {type:"mc",q:`Solve the equation: ${M(equation)}`,choices:uniqueNumericChoices(x,[x,x+1,x-1,-x]).map(n=>M(n)),answer:M(x)};
+  }
+  return {type:"mc",q:`Solve the equation: ${M(`${FR("x+4","3")}=${FR("x-2","5")}`)}`,choices:[M("-13"),M("-11"),M("11"),M("13")],answer:M("-13")};
+}
+
+function generateQuestion18(){
+  let x,a,b,c,d,e,f,equation;
+  for(let tries=0;tries<500;tries++){
+    x=randNonZero(-10,10);
+    a=randNonZero(-8,8); d=randNonZero(-8,8); b=randNonZero(-15,15);
+    c=rand(2,9); f=rand(2,9);
+    if(c===f) continue;
+    const num=f*a*x+f*b-c*d*x;
+    if(num%c!==0) continue;
+    e=num/c;
+    if(e===0||Math.abs(e)>20) continue;
+    equation=`${FR(linearExpression(a,b),c)}=${FR(linearExpression(d,e),f)}`;
+    return {type:"mc",q:`Solve the equation: ${M(equation)}`,choices:uniqueNumericChoices(x,[x,x+1,x-1,-x]).map(n=>M(n)),answer:M(x)};
+  }
+  return {type:"mc",q:`Solve the equation: ${M(`${FR("3x+5","4")}=${FR("2x-1","6")}`)}`,choices:[M("-9"),M("-8"),M("8"),M("9")],answer:M("-8")};
+}
+
+function generateQuestion19(){
+  const contexts=[
+    {p1:"A printing shop",p2:"Another printing shop",item:"pages",fee:rand(500,2000,100),rate1:rand(100,300,50),rate2:rand(350,600,50),q:(p1,p2,item,fee,r1,r2)=>`${p1} charges ${M(fee)} pesos plus ${M(r1)} pesos for each printed page. ${p2} charges ${M(r2)} pesos per page with no extra fee. How many ${item} must be printed so the total cost is the same?`},
+    {p1:"A delivery company",p2:"Another delivery company",item:"kilometers",fee:rand(1000,3000,500),rate1:rand(300,700,100),rate2:rand(800,1200,100),q:(p1,p2,item,fee,r1,r2)=>`${p1} charges a starting fee of ${M(fee)} pesos plus ${M(r1)} pesos per kilometer. ${p2} charges ${M(r2)} pesos per kilometer with no starting fee. For how many ${item} will the total cost be the same?`},
+    {p1:"A bike rental shop",p2:"Another bike rental shop",item:"hours",fee:rand(2000,5000,500),rate1:rand(1000,2000,500),rate2:rand(2500,4000,500),q:(p1,p2,item,fee,r1,r2)=>`${p1} charges ${M(fee)} pesos at the beginning plus ${M(r1)} pesos per hour. ${p2} charges ${M(r2)} pesos per hour with no beginning charge. After how many ${item} will the total costs be equal?`}
+  ];
+  for(let tries=0;tries<300;tries++){
+    const s=randomItem(contexts);
+    if(s.rate2<=s.rate1) continue;
+    if(s.fee%(s.rate2-s.rate1)!==0) continue;
+    const x=s.fee/(s.rate2-s.rate1);
+    if(x<2||x>20) continue;
+    return {type:"mc",q:s.q(s.p1,s.p2,s.item,s.fee,s.rate1,s.rate2),choices:numericChoices(x,1),answer:M(x)};
+  }
+  return {type:"mc",q:`A bike rental shop charges ${M(3000)} pesos at the beginning plus ${M(1000)} pesos per hour. Another shop charges ${M(2500)} pesos per hour with no beginning charge. After how many hours will the total costs be equal?`,choices:[M("2"),M("3"),M("4"),M("5")],answer:M("2")};
+}
+
+function generateQuestion20(){
+  const a=randNonZero(-8,8),b=randNonZero(-15,15),c=randNonZero(-8,8),d=randNonZero(-15,15),x=randNonZero(-6,8);
+  const A=linearExpression(a,b),B=linearExpression(c,d);
+  const valueA=a*x+b,valueB=c*x+d;
+  const operation=Math.random()<.5?"sum":"product";
+  const correct=operation==="sum"?valueA+valueB:valueA*valueB;
+  const q=operation==="sum"
+    ? `Given ${M(`A=${A}`)} and ${M(`B=${B}`)}, find ${M("A+B")} when ${M(`x=${x}`)}.`
+    : `Given ${M(`A=${A}`)} and ${M(`B=${B}`)}, find ${M("A \\times B")} when ${M(`x=${x}`)}.`;
+  return {type:"mc",q,choices:uniqueNumericChoices(correct,[correct,correct+randNonZero(-5,5),correct+randNonZero(-10,10),-correct]).map(n=>M(n)),answer:M(correct)};
+}
+
+function generateQuestion21(){
+  const a=rand(2,9),x=rand(2,12),b=rand(1,15),plus=Math.random()<.5;
+  const c=plus?a*x+b:a*x-b;
+  const eq=plus?`${a}x+${b}=${c}`:`${a}x-${b}=${c}`;
+  const correct=plus?`Subtract ${M(b)} from both sides.`:`Add ${M(b)} to both sides.`;
+  const wrongs=plus?[`Add ${M(b)} to both sides.`,`Divide both sides by ${M(a)}.`,`Multiply both sides by ${M(a)}.`]:[`Subtract ${M(b)} from both sides.`,`Divide both sides by ${M(a)}.`,`Multiply both sides by ${M(a)}.`];
+  return {type:"mc",q:`To solve the equation ${M(eq)}, what should be the first step?`,choices:shuffle([correct,...wrongs]),answer:correct};
+}
+
+function generateQuestion22(){
+  const contexts=[
+    {subject:"A bus",place:"from Santiago to a nearby town",unit:"kilometers",timeUnit:"hours"},
+    {subject:"A cyclist",place:"along a coastal road",unit:"kilometers",timeUnit:"hours"},
+    {subject:"A car",place:"on a highway",unit:"kilometers",timeUnit:"hours"},
+    {subject:"A runner",place:"around a park",unit:"meters",timeUnit:"minutes"},
+    {subject:"A boat",place:"across a lake",unit:"kilometers",timeUnit:"hours"}
+  ];
+  const s=randomItem(contexts);
+  let v,t,d;
+  if(s.unit==="meters"){v=rand(80,180,10);t=rand(3,9);d=v*t}
+  else{v=rand(30,120,10);t=rand(2,8);d=v*t}
+  return {type:"mc",q:`Use the formula ${M("d=vt")}. ${s.subject} travels ${M(d)} ${s.unit} ${s.place} in ${M(t)} ${s.timeUnit}. What is the speed, ${M("v")}?`,choices:numericChoices(v,10),answer:M(v)};
+}
+
+function generateQuestion23(){
+  const values=[-20,-15,-10,-5,0,5,10,15,20,25,30,35,40];
+  const C=randomItem(values);
+  const F=(9*C)/5+32;
+  if(Math.random()<.5){
+    return {type:"mc",q:`The formula to convert Celsius to Fahrenheit is ${M(`F=${FR("9","5")}C+32`)}. Find ${M("F")} when ${M(`C=${C}`)}.`,choices:numericChoices(F,5),answer:M(F)};
+  }
+  return {type:"mc",q:`The formula to convert Celsius to Fahrenheit is ${M(`F=${FR("9","5")}C+32`)}. Find ${M("C")} when ${M(`F=${F}`)}.`,choices:numericChoices(C,5),answer:M(C)};
+}
+
+function generateQuestion24(){
+  const contexts=[
+    {object:"rectangular photo frame",setting:"for a classroom display"},
+    {object:"rectangular window frame",setting:"in a small house"},
+    {object:"rectangular whiteboard",setting:"in a math classroom"},
+    {object:"rectangular garden border",setting:"outside the school"},
+    {object:"rectangular poster",setting:"for a school activity"}
+  ];
+  const selected=randomItem(contexts);
+  const a=rand(2,7),b=rand(1,9),c=rand(2,7),d=rand(1,9),x=rand(2,8);
+  const L=linearExpression(a,b),W=linearExpression(c,d);
+  const perimeter=2*((a*x+b)+(c*x+d));
+  const m=2*(a+c),n=2*(b+d),p=perimeter;
+  const correct=linearEquation(m,n,p);
+  const wrong1=linearEquation(a+c,b+d,p);
+  const wrong2=linearEquation(2*a+c,2*b+d,p);
+  const wrong3=linearEquation(m,b+d,p);
+  return {type:"mc",visual:"rectangle",labels:[M(L),M(W)],q:`A ${selected.object} ${selected.setting} has a length of ${M(L)} centimeters and a width of ${M(W)} centimeters. Its perimeter is ${M(p)} centimeters. Which equation can be used to solve for ${M("x")}?`,choices:uniqueChoices([M(correct),M(wrong1),M(wrong2),M(wrong3)],()=>M(linearEquation(rand(2,20),rand(1,30),p))),answer:M(correct)};
+}
+
+
+function generateQuestion25(){
+  const baseCoeff = rand(2,8);
+  const baseConst = rand(6,14);
+  const diff = rand(2,8);
+
+  const baseExpr = linearExpression(baseCoeff, baseConst);
+
+  const forms = [
+    "length_more",
+    "length_less",
+    "width_more",
+    "width_less"
+  ];
+
+  const form = randomItem(forms);
+
+  let questionText = "";
+  let correct = "";
+
+  if(form === "length_more"){
+    correct = linearExpression(baseCoeff, baseConst + diff);
+    questionText = `The length of a rectangle is ${M(String(diff))} cm more than the width. If the width is ${M(baseExpr)} cm, what is the length?`;
+  }
+
+  if(form === "length_less"){
+    correct = linearExpression(baseCoeff, baseConst - diff);
+    questionText = `The length of a rectangle is ${M(String(diff))} cm less than the width. If the width is ${M(baseExpr)} cm, what is the length?`;
+  }
+
+  if(form === "width_more"){
+    correct = linearExpression(baseCoeff, baseConst + diff);
+    questionText = `The width of a rectangle is ${M(String(diff))} cm more than the length. If the length is ${M(baseExpr)} cm, what is the width?`;
+  }
+
+  if(form === "width_less"){
+    correct = linearExpression(baseCoeff, baseConst - diff);
+    questionText = `The width of a rectangle is ${M(String(diff))} cm less than the length. If the length is ${M(baseExpr)} cm, what is the width?`;
+  }
+
+  const wrong1 = linearExpression(baseCoeff, baseConst);
+  const wrong2 = linearExpression(baseCoeff + 1, baseConst + diff);
+  const wrong3 = linearExpression(baseCoeff, baseConst + diff + 2);
+
+  return {
+    type:"mc",
+    q:questionText,
+    choices:uniqueChoices(
+      [M(correct), M(wrong1), M(wrong2), M(wrong3)],
+      ()=>M(linearExpression(rand(2,10), rand(1,24)))
+    ),
+    answer:M(correct)
+  };
+}
+
+function rand(min,max,step=1){return min+step*Math.floor(Math.random()*(Math.floor((max-min)/step)+1))}
+function randNonZero(min,max){let n=0;while(n===0)n=rand(min,max);return n}
+function randomItem(arr){return arr[Math.floor(Math.random()*arr.length)]}
+function shuffle(arr){return arr.sort(()=>Math.random()-.5)}
+
+function uniqueChoices(arr,filler){
+  const seen=[];
+  arr.forEach(x=>{if(!seen.includes(x))seen.push(x)});
+  while(seen.length<4) seen.push(filler());
+  return shuffle(seen.slice(0,4));
+}
+
+function numericChoices(correct,step=1){
+  const set=new Set([Number(correct)]);
+  let k=1;
+  while(set.size<4){
+    set.add(Number(correct)+step*k);
+    set.add(Number(correct)-step*k);
+    k++;
+  }
+  return shuffle(Array.from(set).slice(0,4).map(n=>M(n)));
+}
+
+function uniqueNumericChoices(correct,options){
+  const set=new Set(options.map(Number));
+  let k=1;
+  while(set.size<4){
+    set.add(Number(correct)+k);
+    set.add(Number(correct)-k);
+    k++;
+  }
+  return shuffle(Array.from(set).slice(0,4));
+}
+
+function expressionXY(xc,yc){
+  let p=[];
+  if(xc!==0)p.push(xc===1?"x":xc===-1?"-x":`${xc}x`);
+  if(yc!==0){
+    let t=yc===1?"y":yc===-1?"-y":`${yc}y`;
+    p.push(p.length&&yc>0?`+${t}`:t);
+  }
+  return p.join("")||"0";
+}
+
+function formatExpression(terms){
+  let e="";
+  terms.forEach(t=>{
+    if(t.c===0)return;
+    let abs=Math.abs(t.c);
+    let term=abs===1?t.v:`${abs}${t.v}`;
+    e+=e===""?(t.c<0?`-${term}`:term):(t.c<0?`-${term}`:`+${term}`);
+  });
+  return e||"0";
+}
+
+
+function formatExpressionMN(terms){
+  let e="";
+  terms.forEach(t=>{
+    if(t.c===0) return;
+    let abs=Math.abs(t.c);
+    let term=abs===1?t.v:`${abs}${t.v}`;
+    if(e===""){
+      e+=t.c<0?`-${term}`:term;
+    }else{
+      e+=t.c<0?`-${term}`:`+${term}`;
+    }
+  });
+  return e||"0";
+}
+
+function linearExpression(xc,c){
+  let e="";
+  if(xc!==0)e+=xc===1?"x":xc===-1?"-x":`${xc}x`;
+  if(c!==0)e+=e===""?String(c):(c>0?`+${c}`:String(c));
+  return e||"0";
+}
+
+function quadraticExpression(a,b,c){
+  let p=[];
+  if(a!==0)p.push(a===1?"x^2":a===-1?"-x^2":`${a}x^2`);
+  if(b!==0){
+    let t=Math.abs(b)===1?"x":`${Math.abs(b)}x`;
+    p.push(p.length?(b<0?`-${t}`:`+${t}`):(b<0?`-${t}`:t));
+  }
+  if(c!==0)p.push(p.length?(c<0?String(c):`+${c}`):String(c));
+  return p.join("")||"0";
+}
+
+function linearTerm(coeff,variable){
+  if(coeff===1)return variable;
+  if(coeff===-1)return `-${variable}`;
+  return `${coeff}${variable}`;
+}
+
+function signedNumber(n){
+  if(n>0)return `+${n}`;
+  if(n<0)return `${n}`;
+  return "";
+}
+
+function signedTerm(coeff,variable){
+  if(coeff===0)return "";
+  if(coeff>0)return coeff===1?`+${variable}`:`+${coeff}${variable}`;
+  if(coeff===-1)return `-${variable}`;
+  return `${coeff}${variable}`;
+}
+
+function signedFraction(n,d){
+  if(n>0)return `+${FR(n,d)}`;
+  if(n<0)return `-${FR(Math.abs(n),d)}`;
+  return "";
+}
+
+function fractionTerm(coeff,variable,denominator){
+  if(coeff===1)return FR(variable,denominator);
+  if(coeff===-1)return `-${FR(variable,denominator)}`;
+  return FR(`${coeff}${variable}`,denominator);
+}
+
+function linearEquation(m,n,p){
+  let left="";
+  if(m===1)left="x";
+  else if(m===-1)left="-x";
+  else left=`${m}x`;
+  if(n>0)left+=`+${n}`;
+  if(n<0)left+=`${n}`;
+  return `${left}=${p}`;
+}
+
+async function submitScore(score,percentage){
+  const payload={score,percentage};
+  console.log("Score data prepared:",payload);
+  if(!GOOGLE_SCRIPT_URL)return;
+  try{
+    await fetch(GOOGLE_SCRIPT_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});
+  }catch(e){console.error("Score submission failed:",e)}
+}
+
+function typeset(){
+  if(window.MathJax&&MathJax.typesetPromise){
+    MathJax.typesetPromise().catch(console.log);
+  }
+}
+
+renderOpening();
+</script>
+</body>
+</html>
