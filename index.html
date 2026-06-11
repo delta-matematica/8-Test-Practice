@@ -83,6 +83,38 @@ let answers=[];
 let floatingTimer=null;
 let questions=makeQuestionSet();
 
+const TEST_LOCK_KEY = "grade8_algebra_practice_test_completed_v1";
+
+function hasCompletedTest(){
+  return localStorage.getItem(TEST_LOCK_KEY) === "yes";
+}
+
+function lockCompletedTest(){
+  localStorage.setItem(TEST_LOCK_KEY, "yes");
+}
+
+function renderAlreadyCompleted(){
+  stopFloatingSymbols();
+  const app=document.getElementById("app");
+  app.innerHTML=`
+    <div class="screen">
+      <div class="bg"></div>
+      <div class="grid"></div>
+      <div class="stream"></div>
+      <div class="orb orb1"></div>
+      <div class="orb orb2"></div>
+      <div class="orb orb3"></div>
+      <div class="card test-card">
+        <div class="top-label">ATTEMPT COMPLETED</div>
+        <h1>This test has already been submitted.</h1>
+        <p class="subtitle">
+          You are allowed to take this practice test only once.
+        </p>
+        <button class="nav-button" onclick="renderOpening()">Back to Home</button>
+      </div>
+    </div>`;
+}
+
 function bgHTML(){
   return `<div class="bg" id="bg">
     <div class="grid"></div>
@@ -118,7 +150,7 @@ function renderOpening(){
   <section class="card">
     <div class="top-label">8° Grade Mathematics</div>
     <h1>Algebra<span class="title-highlight">Practice Test</span></h1>
-    <p class="subtitle">This preview includes 25 generated Grade 8 algebra question types. Each test randomizes the question order. When students click Try Again, the same skills appear with new values and a new order.</p>
+    <p class="subtitle">This preview includes 25 generated Grade 8 algebra question types. Each test randomizes the question order. Students can submit this test only once.</p>
     <div class="info-row">
       <div class="info-box"><span>Level</span>Grade 8</div>
       <div class="info-box"><span>Questions</span>25</div>
@@ -130,6 +162,10 @@ function renderOpening(){
 }
 
 function beginTest(){
+  if(hasCompletedTest()){
+    renderAlreadyCompleted();
+    return;
+  }
   answers=questions.map(q=>q.type==="matching"?Array(q.prompts.length).fill(""):null);
   current=0;
   renderQuestion();
@@ -357,6 +393,7 @@ function renderSubmitConfirmation(){
 function finalSubmit(){
   const score=questions.reduce((s,q,i)=>s+(isCorrect(q,answers[i])?1:0),0);
   const pct=Math.round(score/questions.length*100);
+  lockCompletedTest();
   submitScore(score,pct);
 
   const remark=pct>=70?"CONGRATULATIONS":"TRY AGAIN";
